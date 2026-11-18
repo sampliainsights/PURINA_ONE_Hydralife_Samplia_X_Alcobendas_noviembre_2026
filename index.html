@@ -3805,7 +3805,7 @@
         id: 'brake', col: COL.brake,
         t: '¿Cuál de los siguientes sería tu freno o motivo principal para dudar o no comprarlo?'
       },
-      rec: { id: 'rec', col: COL.rec, t: '¿Recomendarías a un amigo o familiar comprar este producto que has probado con Samplia?' }
+      rec: { id: 'rec', col: COL.rec, bm: 7.8, t: '¿Recomendarías a un amigo o familiar comprar este producto que has probado con Samplia?' }
     };
     const Q_ORDER = ['pet', 'know', 'freq', 'react', 'factor', 'offer', 'like', 'impress', 'word', 'buy', 'brake', 'rec'];
     /* Notas fijas de cada tarjeta; la de respuesta múltiple se añade sola
@@ -4789,6 +4789,7 @@
       setBase(id, st.n, VIEW.length);
       if (chips) chips.innerHTML = st.n
         ? `<span class="scorechip">Nota media <b>${df(st.mean, 2)} / 10</b>${q.bm ? bmPill(st.mean, q.bm) : ''}</span>`
+          + (q.bm ? `<span class="scorechip">Benchmark <b>${df(q.bm, 1)} / 10</b></span>` : '')
         : '';
       const set = (k, v) => { const el = document.getElementById(id + '_' + k); if (el) el.innerHTML = v; };
       if (!st.n) {
